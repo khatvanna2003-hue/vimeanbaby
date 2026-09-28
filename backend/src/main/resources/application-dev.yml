@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/vimeanbaby_db}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres123}
+  jpa:
+    show-sql: true
+
+logging:
+  level:
+    com.vimeanbaby: DEBUG
+    org.springframework.security: INFO

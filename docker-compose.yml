@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: vimeanbaby-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: vimeanbaby_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d vimeanbaby_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: vimeanbaby-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      DB_URL: jdbc:postgresql://postgres:5432/vimeanbaby_db
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres123
+      JWT_SECRET: change-me-to-a-long-random-secret-at-least-256-bits-long
+      CORS_ALLOWED_ORIGINS: http://localhost:3000,http://localhost:3001
+      SERVER_PORT: 8080
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:

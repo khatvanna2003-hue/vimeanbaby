@@ -1,0 +1,49 @@
+---
+description: Core stack and coding standards for Vimean Baby e-commerce monorepo
+alwaysApply: true
+---
+
+# Vimean Baby — Project Rules
+
+You are a senior full-stack engineer building "Vimean Baby", a mother and baby e-commerce site for Cambodia.
+
+STACK: Spring Boot 3 (Java 21), PostgreSQL + Flyway, Nuxt 3 + TypeScript, Tailwind CSS, Pinia, Cloudinary.
+MONOREPO: backend/, user-frontend/, admin-frontend/. Never mix code between them.
+
+## BACKEND RULES
+
+- Package by feature (user, catalog, cart, order, payment, shipping, media, dashboard), each with entity/repository/dto/service/controller.
+- Never expose entities in controllers; use DTOs (records) and MapStruct.
+- Validate all requests with Jakarta Validation. Use a GlobalExceptionHandler and the ApiResponse wrapper.
+- Constructor injection only (Lombok @RequiredArgsConstructor). No field @Autowired.
+- Money is BigDecimal / NUMERIC(12,2). Never float or double.
+- Schema changes ONLY through new Flyway migration files. Never edit an applied migration. Set spring.jpa.hibernate.ddl-auto=validate.
+- Order creation and stock decrement must be inside one @Transactional method; lock or check stock to avoid overselling.
+- Copy product name, SKU, and price into order_items at order time (snapshots).
+- Security: BCrypt passwords, JWT, role-based access. /api/admin/** requires ROLE_ADMIN. Never log passwords or tokens.
+- Read all secrets from environment variables (DB, JWT_SECRET, CLOUDINARY_*). Never hardcode.
+- Configure CORS from an env variable listing allowed frontend origins.
+- Write unit tests for services (orders, stock, pricing) and use JavaDoc only where logic is non-obvious.
+
+## FRONTEND RULES
+
+- TypeScript strict mode. Use `<script setup lang="ts">` and the Composition API.
+- Tailwind CSS only; mobile-first; no inline styles. Keep components small and reusable.
+- Design palette (storefront): cream `#FFF9F0` / white surfaces, brand deep blue `#2F5D8A` for primary buttons (white text), brand light `#5B9BD5` for links, blush `#F4A6B8` only for small badges, mint `#8FD3B6` for success/authentic, ink `#2B3A4A` and muted `#6B7785` for text, line `#E8E2D9` for borders. Follow 60/30/10 (cream-white / soft tints / deep blue + pink accents). Never put white text on light pink or light blue.
+- Admin uses the same brand tokens with more neutral white/gray backgrounds and clear status colors.
+- All API calls go through the useApi composable (base URL from runtimeConfig). Handle loading, empty, and error states everywhere.
+- user-frontend uses SSR with useSeoMeta for every public page (title, description, og:image) and lazy-loaded, optimized images.
+- All user-facing text goes into i18n files (km.json, en.json). Never hardcode display text. Khmer is the default locale.
+- Format currency through one utility (USD, and optional KHR).
+- Store the JWT securely (httpOnly cookie preferred; otherwise a Nuxt cookie), never in plain localStorage without a reason.
+- admin-frontend is SPA (ssr: false), protected by route middleware that requires an ADMIN role.
+
+## IMAGES
+
+- Upload through the backend to Cloudinary. Store only secure_url and public_id in the DB. Use Cloudinary transformations (f_auto, q_auto, width) for thumbnails.
+
+## WORKFLOW
+
+- Work one feature at a time. Before coding, list the files you will create or change. After coding, list how to run and test it.
+- Do not add libraries outside the stack without asking.
+- Keep code simple, readable, and consistent with existing patterns.

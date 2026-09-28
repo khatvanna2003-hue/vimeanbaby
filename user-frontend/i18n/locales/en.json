@@ -1,0 +1,133 @@
+{
+  "app": {
+    "name": "Vimean Baby",
+    "tagline": "Mother and baby products",
+    "utilityTagline": "From everyday to premium — all in one place"
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "products": "Products",
+    "categories": "Categories",
+    "blog": "Blog & News",
+    "contact": "Contact",
+    "cart": "Cart",
+    "account": "My Account",
+    "support": "Customer Support",
+    "search": "Search"
+  },
+  "locale": {
+    "cambodia": "Cambodia (USD $, EN)",
+    "km": "ខ្មែរ",
+    "en": "English"
+  },
+  "search": {
+    "all": "All",
+    "placeholder": "Search products..."
+  },
+  "home": {
+    "heroEyebrow": "For moms and little ones",
+    "heroTitle": "Trusted care for baby skin",
+    "heroSubtitle": "Authentic diapers, wipes, and bath care for families in Cambodia.",
+    "shopNow": "Shop now",
+    "viewAll": "View all products",
+    "categories": "Categories",
+    "categoriesSub": "Browse every mother and baby category in one place.",
+    "topOffers": "Top offers",
+    "topOffersSub": "Hand-picked essentials for mother and baby",
+    "storyTitle": "Made for Cambodia families",
+    "storyBody": "Vimean Baby brings trusted mother and baby essentials with clear brand and expiry information.",
+    "storyCta": "Learn more",
+    "trustAuth": "Authentic products",
+    "trustCod": "Cash on delivery",
+    "trustShip": "Nationwide delivery"
+  },
+  "product": {
+    "addToCart": "+ CART",
+    "onlyLeft": "Only {count} left",
+    "from": "From",
+    "outOfStock": "Out of stock",
+    "description": "Description",
+    "variants": "Options",
+    "age": "Age",
+    "origin": "Origin",
+    "brand": "Brand",
+    "featured": "Featured",
+    "expiry": "Expiry"
+  },
+  "shop": {
+    "title": "Shop",
+    "allProducts": "All products",
+    "filters": "Filter",
+    "sort": "Sort",
+    "sortFeatured": "Featured",
+    "sortNewest": "Newest",
+    "sortName": "Name A-Z",
+    "count": "{count} products",
+    "empty": "No products found",
+    "loading": "Loading...",
+    "error": "Could not load data"
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty",
+    "continue": "Continue shopping",
+    "estimatedTotal": "Estimated total",
+    "note": "Taxes, discounts and shipping calculated at checkout",
+    "checkout": "Checkout",
+    "remove": "Remove"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "We are here to help",
+    "helpTitle": "Help & Contact",
+    "helpBody": "Questions about products or orders? Reach our team anytime.",
+    "returnsTitle": "Returns",
+    "returnsBody": "Easy returns within the return window.",
+    "shipTitle": "Shipment",
+    "shipBody": "Reliable delivery across Cambodia with tracking notes.",
+    "phone": "Tel: +855 12 345 678",
+    "email": "hello{'@'}vimeanbaby.com",
+    "address": "Phnom Penh, Cambodia",
+    "hours": "Daily 8:00 – 20:00",
+    "supportTitle": "Do you need support?",
+    "supportBody": "Check shipping and returns first, or send us a message. We reply within 24 hours.",
+    "formTitle": "Make contact",
+    "formHint": "Tell us your request and we will get back soon.",
+    "formThanks": "Thanks! Your message was recorded (demo form).",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "emailLabel": "Email",
+    "topic": "Inquiry",
+    "topicOrder": "Order",
+    "topicProduct": "Product",
+    "topicShipping": "Shipping",
+    "topicOther": "Other",
+    "message": "Message",
+    "send": "Send"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "comingSoon": "Full checkout arrives in the next phase."
+  },
+  "account": {
+    "comingSoon": "Login and account features arrive in Phase 2 / 6."
+  },
+  "footer": {
+    "about": "About Us",
+    "help": "Help & Contact",
+    "privacy": "Privacy",
+    "shipping": "Shipping",
+    "returns": "Returns",
+    "rights": "All rights reserved",
+    "newsletterTitle": "Get baby-care tips & offers",
+    "newsletterBody": "Join our list for new arrivals and COD-friendly deals.",
+    "newsletterPlaceholder": "Your email",
+    "newsletterThanks": "Thanks for subscribing!",
+    "subscribe": "Join"
+  },
+  "common": {
+    "previous": "Previous",
+    "next": "Next"
+  }
+}

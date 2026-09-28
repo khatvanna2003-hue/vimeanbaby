@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-brand: #2f5d8a;
+  --color-brand-light: #5b9bd5;
+  --color-brand-tint: #dceffb;
+  --color-blush: #f4a6b8;
+  --color-blush-tint: #fde4ec;
+  --color-mint: #8fd3b6;
+  --color-mint-tint: #ddf3e8;
+  --color-cream: #fff9f0;
+  --color-ink: #2b3a4a;
+  --color-muted: #6b7785;
+  --color-line: #e8e2d9;
+  --color-danger: #e5534b;
+  --color-warn: #f0a030;
+}
+
+html {
+  font-family: 'Kantumruy Pro', 'Noto Sans Khmer', system-ui, sans-serif;
+}
+
+body {
+  @apply bg-cream text-ink antialiased;
+}
+
+@layer components {
+  .container-store {
+    @apply mx-auto w-full max-w-7xl;
+  }
+
+  .section-pad {
+    @apply px-4 py-10 sm:px-6 lg:px-8 lg:py-14;
+  }
+
+  .btn-primary {
+    @apply inline-flex min-h-12 items-center justify-center rounded-2xl bg-brand px-5 text-sm font-semibold text-white transition hover:bg-brand/90;
+  }
+
+  .btn-ghost {
+    @apply inline-flex min-h-12 items-center justify-center rounded-2xl border border-line bg-white px-5 text-sm font-semibold text-ink transition hover:bg-brand-tint/60;
+  }
+
+  .badge-sale {
+    @apply inline-flex items-center rounded-full bg-blush-tint px-2.5 py-1 text-[11px] font-medium text-ink;
+  }
+
+  .badge-success {
+    @apply inline-flex items-center rounded-full bg-mint-tint px-2.5 py-1 text-[11px] font-medium text-ink;
+  }
+
+  .badge-warn {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-blush-tint px-2.5 py-1 text-[11px] font-medium text-ink;
+  }
+
+  .card-surface {
+    @apply rounded-card border border-line bg-white shadow-soft;
+  }
+
+  .shadow-soft {
+    box-shadow: 0 10px 28px rgba(43, 58, 74, 0.08);
+  }
+}
