@@ -16,7 +16,7 @@ const localePath = useLocalePath()
       <button class="absolute inset-0 bg-ink/40" type="button" :aria-label="t('nav.home')" @click="$emit('close')" />
       <aside class="absolute inset-y-0 left-0 flex w-[86%] max-w-sm flex-col bg-white shadow-soft">
         <div class="flex items-center justify-between border-b border-line px-5 py-4">
-          <p class="text-lg font-bold">{{ t('app.name') }}</p>
+          <img src="/logo.svg" :alt="t('app.name')" class="h-10 w-auto" width="166" height="40">
           <button type="button" class="h-10 w-10 rounded-full border border-line" @click="$emit('close')">
             ✕
           </button>

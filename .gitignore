@@ -11,6 +11,10 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
+.env.production
+**/.env.production
+real.env
+**/real.env
 **/application-local.yml
 
 # Backend (Maven)
@@ -30,7 +34,9 @@ npm-debug.log*
 
 # Frontend env
 user-frontend/.env
+user-frontend/.env.production
 admin-frontend/.env
+admin-frontend/.env.production
 
 # Docker
 *.pid

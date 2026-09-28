@@ -67,7 +67,7 @@ useSeoMeta({
       </p>
 
       <div class="grid gap-8 lg:grid-cols-2">
-        <div class="overflow-hidden rounded-[1.5rem] border border-line bg-white p-4 shadow-soft">
+        <div class="animate-fade-up overflow-hidden rounded-[1.5rem] border border-line bg-white p-4 shadow-soft">
           <SafeImage :src="activeImage" :alt="name" img-class="aspect-square w-full rounded-2xl object-cover" />
           <div v-if="product.images.length > 1" class="mt-3 grid grid-cols-4 gap-2">
             <SafeImage
@@ -80,7 +80,7 @@ useSeoMeta({
           </div>
         </div>
 
-        <div>
+        <div class="animate-fade-up [animation-delay:150ms]">
           <p class="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             {{ product.brand?.name || t('product.brand') }}
           </p>

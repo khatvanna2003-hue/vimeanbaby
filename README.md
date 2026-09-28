@@ -32,10 +32,11 @@ docker compose up -d postgres
 ```bash
 cd backend
 cp .env.example .env
-# Load env vars into your shell, or export them
+# Fill CLOUDINARY_CLOUD_NAME / API_KEY / API_SECRET (same for local + production)
 mvn spring-boot:run
 ```
 
+`spring-dotenv` loads `backend/.env` automatically.
 API: http://localhost:8080  
 Swagger UI: http://localhost:8080/swagger-ui.html  
 Health: http://localhost:8080/actuator/health
@@ -68,13 +69,22 @@ http://localhost:3001
 docker compose up --build
 ```
 
+### Deploy backend to Railway
+
+See **`docs/railway-backend.md`**.
+
+1. Root Directory = `backend`
+2. Builder = Dockerfile
+3. Set Neon `DB_*`, Cloudinary, `JWT_SECRET`, `SPRING_PROFILES_ACTIVE=prod`
+4. Generate domain → check `/actuator/health`
+
 ## Phase status
 
 - [x] Phase 0: Scaffold
-- [ ] Phase 1: Database and catalog backend
+- [x] Phase 1: Database and catalog backend
 - [ ] Phase 2: Auth (JWT)
-- [ ] Phase 3: Cloudinary media
-- [ ] Phase 4: Customer storefront
+- [x] Phase 3: Cloudinary media
+- [x] Phase 4: Customer storefront (MVP)
 - [ ] Phase 5: Cart and checkout
 - [ ] Phase 6: Customer account
 - [ ] Phase 7: Admin panel
@@ -86,3 +96,5 @@ docker compose up --build
 - Khmer is the default storefront locale.
 - Money is stored as `NUMERIC(12,2)` / `BigDecimal` — never float.
 - Schema changes only via Flyway migrations.
+- **Database:** local = Docker/pgAdmin Postgres; production = **Neon**. See `docs/environments.md`.
+- **Images:** all uploads go through `POST /api/admin/media/upload` → Cloudinary (same cloud for local + production). Set `CLOUDINARY_*` in `backend/.env` and on Railway. Never commit secrets.

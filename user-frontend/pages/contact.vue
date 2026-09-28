@@ -29,12 +29,12 @@ function submit() {
 
 <template>
   <div>
-    <div class="bg-gradient-to-r from-mint-tint via-brand-tint to-blush-tint">
+    <div class="bg-brand">
       <div class="container-store section-pad text-center">
-        <h1 class="text-4xl font-bold text-ink">{{ t('contact.title') }}</h1>
-        <p class="mt-3 text-ink-muted">{{ t('contact.subtitle') }}</p>
-        <p class="mt-4 text-lg font-semibold text-brand">{{ t('contact.phone') }}</p>
-        <p class="mt-1 text-sm text-ink-muted">{{ t('contact.hours') }}</p>
+        <h1 class="text-4xl font-bold text-white">{{ t('contact.title') }}</h1>
+        <p class="mt-3 text-white/80">{{ t('contact.subtitle') }}</p>
+        <p class="mt-4 text-lg font-semibold text-white">{{ t('contact.phone') }}</p>
+        <p class="mt-1 text-sm text-white/75">{{ t('contact.hours') }}</p>
       </div>
     </div>
 

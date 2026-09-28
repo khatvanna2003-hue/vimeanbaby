@@ -38,6 +38,7 @@ export default defineNuxtConfig({
       title: 'Vimean Baby',
       htmlAttrs: { lang: 'km' },
       link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/logo-mark.svg' },
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&family=Noto+Sans+Khmer:wght@400;500;600;700&display=swap',

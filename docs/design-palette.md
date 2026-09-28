@@ -1,12 +1,12 @@
 # Design palette
 
-Canonical storefront palette for Vimean Baby (blue + pink + cream).
+Canonical storefront palette for Vimean Baby (coral pink + cream).
 
 | Role | Hex | Tailwind |
 |---|---|---|
-| Primary / buttons | `#2F5D8A` | `bg-brand text-white` |
-| Links / highlights | `#5B9BD5` | `text-brand-light` |
-| Soft section tint | `#DCEFFB` | `bg-brand-tint` |
+| Primary / buttons | `#FF5C77` | `bg-brand text-white` |
+| Links / highlights | `#FF8A9B` | `text-brand-light` |
+| Soft section tint | `#FFE5EA` | `bg-brand-tint` |
 | Badge pink | `#F4A6B8` | `bg-blush` (badges only) |
 | Soft blush section | `#FDE4EC` | `bg-blush-tint` |
 | Success / authentic | `#8FD3B6` | `bg-mint` / `bg-mint-tint` |
@@ -18,6 +18,6 @@ Canonical storefront palette for Vimean Baby (blue + pink + cream).
 | Error | `#E5534B` | `text-danger` |
 | Warning / low stock | `#F0A030` | `text-warn` |
 
-**60/30/10:** cream+white / soft blue+blush tints / deep blue buttons + pink accents.
+**60/30/10:** cream+white / soft pink+mint tints / coral pink buttons + accents.
 
-Primary CTA classes: `.btn-primary` (deep blue + white text). Do not use white text on light pink or light blue.
+Primary CTA classes: `.btn-primary` (coral pink + white text). Do not use white text on light pink or light mint.

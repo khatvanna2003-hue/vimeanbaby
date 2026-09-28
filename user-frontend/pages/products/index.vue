@@ -20,7 +20,7 @@ const { data, pending, error, refresh } = await useAsyncData(
   () => apiFetch<PageResponse<ProductSummary>>('/public/products', {
     query: {
       page: page.value,
-      size: 12,
+      size: 20,
       q: q.value || undefined,
       category: category.value || undefined,
       sort: sort.value,

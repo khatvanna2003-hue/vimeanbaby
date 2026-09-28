@@ -57,11 +57,14 @@ function onSearch() {
           </svg>
         </button>
 
-        <NuxtLink :to="localePath('/')" class="shrink-0">
-          <span class="block text-xl font-bold tracking-tight text-ink sm:text-2xl">
-            {{ t('app.name') }}
-          </span>
-          <span class="hidden text-[11px] text-muted sm:block">{{ t('app.tagline') }}</span>
+        <NuxtLink :to="localePath('/')" class="shrink-0" :aria-label="t('app.name')">
+          <img
+            src="/logo.svg"
+            :alt="t('app.name')"
+            class="h-10 w-auto sm:h-12"
+            width="199"
+            height="48"
+          >
         </NuxtLink>
 
         <form class="mx-auto hidden min-w-0 flex-1 md:flex" @submit.prevent="onSearch">
@@ -123,13 +126,13 @@ function onSearch() {
     </div>
 
     <!-- Primary nav -->
-    <nav class="hidden border-b border-line bg-gradient-to-r from-mint-tint via-brand-tint to-blush-tint lg:block">
+    <nav class="hidden bg-brand lg:block">
       <div class="container-store flex items-center justify-center gap-8 px-8 py-3">
         <NuxtLink
           v-for="link in navLinks"
           :key="link.label"
           :to="link.to"
-          class="text-sm font-semibold text-ink/90 transition hover:text-brand"
+          class="text-sm font-semibold text-white/95 transition hover:text-white"
         >
           {{ link.label }}
         </NuxtLink>

@@ -29,7 +29,7 @@ MONOREPO: backend/, user-frontend/, admin-frontend/. Never mix code between them
 
 - TypeScript strict mode. Use `<script setup lang="ts">` and the Composition API.
 - Tailwind CSS only; mobile-first; no inline styles. Keep components small and reusable.
-- Design palette (storefront): cream `#FFF9F0` / white surfaces, brand deep blue `#2F5D8A` for primary buttons (white text), brand light `#5B9BD5` for links, blush `#F4A6B8` only for small badges, mint `#8FD3B6` for success/authentic, ink `#2B3A4A` and muted `#6B7785` for text, line `#E8E2D9` for borders. Follow 60/30/10 (cream-white / soft tints / deep blue + pink accents). Never put white text on light pink or light blue.
+- Design palette (storefront): cream `#FFF9F0` / white surfaces, brand coral `#FF5C77` for primary buttons (white text), brand light `#FF8A9B` for links, blush `#F4A6B8` only for small badges, mint `#8FD3B6` for success/authentic, ink `#2B3A4A` and muted `#6B7785` for text, line `#E8E2D9` for borders. Follow 60/30/10 (cream-white / soft tints / coral pink accents). Never put white text on light pink or light mint.
 - Admin uses the same brand tokens with more neutral white/gray backgrounds and clear status colors.
 - All API calls go through the useApi composable (base URL from runtimeConfig). Handle loading, empty, and error states everywhere.
 - user-frontend uses SSR with useSeoMeta for every public page (title, description, og:image) and lazy-loaded, optimized images.

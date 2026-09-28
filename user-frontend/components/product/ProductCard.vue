@@ -12,6 +12,12 @@ const cart = useCartStore()
 
 const name = computed(() => (locale.value === 'km' ? props.product.nameKm : props.product.nameEn))
 const lowStock = computed(() => props.product.stockQty > 0 && props.product.stockQty <= 10)
+const discountPercent = computed(() => {
+  const price = Number(props.product.price)
+  const compareAt = Number(props.product.compareAtPrice)
+  if (!compareAt || compareAt <= price) return 0
+  return Math.round((1 - price / compareAt) * 100)
+})
 
 function addToCart() {
   cart.addSummary(props.product, name.value)
@@ -19,13 +25,16 @@ function addToCart() {
 </script>
 
 <template>
-  <article class="flex h-full flex-col rounded-2xl border border-line bg-white p-3 shadow-soft transition hover:-translate-y-0.5 hover:shadow-md">
-    <NuxtLink :to="localePath(`/products/${product.slug}`)" class="block overflow-hidden rounded-xl bg-cream">
+  <article class="group flex h-full flex-col rounded-2xl border border-line bg-white p-3 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-md">
+    <NuxtLink :to="localePath(`/products/${product.slug}`)" class="relative block overflow-hidden rounded-xl bg-cream">
       <SafeImage
         :src="product.primaryImageUrl"
         :alt="name"
-        img-class="aspect-square w-full object-cover transition duration-500 hover:scale-105"
+        img-class="aspect-square w-full object-cover transition duration-500 group-hover:scale-105"
       />
+      <span v-if="discountPercent > 0" class="badge-sale absolute left-2 top-2 font-bold">
+        {{ t('product.discount', { percent: discountPercent }) }}
+      </span>
     </NuxtLink>
 
     <div class="mt-3 flex flex-1 flex-col">
