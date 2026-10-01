@@ -15,7 +15,8 @@ public final class CatalogDtos {
             String nameEn,
             String slug,
             String imageUrl,
-            Integer sortOrder
+            Integer sortOrder,
+            boolean active
     ) {
     }
 
@@ -23,13 +24,15 @@ public final class CatalogDtos {
             Long id,
             String name,
             String slug,
-            String logoUrl
+            String logoUrl,
+            boolean active
     ) {
     }
 
     public record ProductImageResponse(
             Long id,
             String url,
+            String cloudinaryPublicId,
             Integer sortOrder,
             boolean primary
     ) {
@@ -42,7 +45,8 @@ public final class CatalogDtos {
             BigDecimal price,
             BigDecimal compareAtPrice,
             Integer stockQty,
-            LocalDate expiryDate
+            LocalDate expiryDate,
+            boolean active
     ) {
     }
 
@@ -53,11 +57,15 @@ public final class CatalogDtos {
             String slug,
             String brandName,
             String categorySlug,
+            String categoryName,
             String primaryImageUrl,
             BigDecimal price,
             BigDecimal compareAtPrice,
             Integer stockQty,
+            Integer totalStock,
+            Integer variantCount,
             boolean featured,
+            boolean active,
             String ageRange
     ) {
     }
@@ -72,6 +80,7 @@ public final class CatalogDtos {
             String ageRange,
             String originCountry,
             boolean featured,
+            boolean active,
             CategoryResponse category,
             BrandResponse brand,
             List<ProductImageResponse> images,

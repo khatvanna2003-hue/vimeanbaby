@@ -6,6 +6,7 @@ export default {
     './layouts/**/*.vue',
     './pages/**/*.vue',
     './composables/**/*.{js,ts}',
+    './utils/**/*.{js,ts}',
     './app.vue',
   ],
   theme: {
@@ -35,7 +36,7 @@ export default {
         surface: '#F5F7FA',
       },
       fontFamily: {
-        sans: ['"Kantumruy Pro"', 'system-ui', 'sans-serif'],
+        sans: ['"Kantumruy Pro"', '"Noto Sans Khmer"', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         card: '1rem',

@@ -191,9 +191,40 @@ public class CatalogService {
         brand.setActive(false);
     }
 
-    public PageResponse<ProductSummaryResponse> listAdminProducts(int page, int size) {
+    public PageResponse<ProductSummaryResponse> listAdminProducts(
+            String q,
+            Long categoryId,
+            Long brandId,
+            String status,
+            int page,
+            int size
+    ) {
         Pageable pageable = PageRequest.of(Math.max(page, 0), Math.min(Math.max(size, 1), 100), Sort.by("id").descending());
-        Page<Product> result = productRepository.findAll(pageable);
+        Specification<Product> spec = (root, query, cb) -> {
+            List<Predicate> predicates = new ArrayList<>();
+            if (StringUtils.hasText(q)) {
+                String like = "%" + q.trim().toLowerCase() + "%";
+                predicates.add(cb.or(
+                        cb.like(cb.lower(root.get("nameEn")), like),
+                        cb.like(cb.lower(root.get("nameKm")), like),
+                        cb.like(cb.lower(root.get("slug")), like)
+                ));
+            }
+            if (categoryId != null) {
+                predicates.add(cb.equal(root.get("category").get("id"), categoryId));
+            }
+            if (brandId != null) {
+                predicates.add(cb.equal(root.get("brand").get("id"), brandId));
+            }
+            if ("active".equals(status)) {
+                predicates.add(cb.isTrue(root.get("active")));
+                predicates.add(cb.isNull(root.get("deletedAt")));
+            } else if ("inactive".equals(status)) {
+                predicates.add(cb.or(cb.isFalse(root.get("active")), cb.isNotNull(root.get("deletedAt"))));
+            }
+            return cb.and(predicates.toArray(Predicate[]::new));
+        };
+        Page<Product> result = productRepository.findAll(spec, pageable);
         return new PageResponse<>(
                 result.getContent().stream().map(catalogMapper::toSummary).toList(),
                 result.getNumber(),
@@ -206,7 +237,7 @@ public class CatalogService {
     public ProductDetailResponse getAdminProduct(Long id) {
         Product product = productRepository.findDetailedById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
-        return catalogMapper.toDetail(product);
+        return catalogMapper.toDetail(product, true);
     }
 
     @Transactional
@@ -215,7 +246,7 @@ public class CatalogService {
         Product product = new Product();
         applyProduct(product, request);
         Product saved = productRepository.save(product);
-        return catalogMapper.toDetail(productRepository.findDetailedById(saved.getId()).orElse(saved));
+        return catalogMapper.toDetail(productRepository.findDetailedById(saved.getId()).orElse(saved), true);
     }
 
     @Transactional
@@ -227,7 +258,7 @@ public class CatalogService {
         product.getVariants().clear();
         productRepository.flush();
         applyProduct(product, request);
-        return catalogMapper.toDetail(product);
+        return catalogMapper.toDetail(product, true);
     }
 
     @Transactional

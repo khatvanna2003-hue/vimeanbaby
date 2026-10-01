@@ -26,10 +26,14 @@ public class AdminProductController {
 
     @GetMapping
     public ApiResponse<PageResponse<ProductSummaryResponse>> list(
+            @RequestParam(required = false) String q,
+            @RequestParam(required = false) Long categoryId,
+            @RequestParam(required = false) Long brandId,
+            @RequestParam(required = false) String status,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size
     ) {
-        return ApiResponse.ok(catalogService.listAdminProducts(page, size));
+        return ApiResponse.ok(catalogService.listAdminProducts(q, categoryId, brandId, status, page, size));
     }
 
     @GetMapping("/{id}")

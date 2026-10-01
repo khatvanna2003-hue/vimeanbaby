@@ -2,6 +2,7 @@
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const cart = useCartStore()
+const auth = useAuthStore()
 const mobileOpen = ref(false)
 const searchQuery = ref('')
 
@@ -33,9 +34,14 @@ function onSearch() {
           <a href="tel:+85512345678" class="hidden items-center gap-1.5 sm:inline-flex">
             <span>Tel: +855 12 345 678</span>
           </a>
-          <NuxtLink :to="localePath('/login')" class="hidden sm:inline">
-            {{ t('nav.account') }}
+          <NuxtLink v-if="auth.isLoggedIn" :to="localePath('/account')" class="hidden max-w-40 truncate sm:inline">
+            {{ t('account.hi', { name: auth.user?.fullName.split(' ')[0] }) }}
           </NuxtLink>
+          <span v-else class="hidden sm:inline">
+            <NuxtLink :to="localePath('/login')" class="hover:underline">{{ t('auth.signIn') }}</NuxtLink>
+            <span class="px-1 opacity-60">/</span>
+            <NuxtLink :to="localePath('/register')" class="hover:underline">{{ t('auth.register') }}</NuxtLink>
+          </span>
           <span class="rounded-full bg-white/10 px-2.5 py-1">
             {{ t('locale.cambodia') }}
           </span>
@@ -96,15 +102,7 @@ function onSearch() {
             <p class="text-xs text-muted">+855 12 345 678</p>
           </div>
           <LanguageSwitcher />
-          <NuxtLink
-            :to="localePath('/login')"
-            class="hidden h-11 w-11 items-center justify-center rounded-full border border-line sm:inline-flex"
-            :aria-label="t('nav.account')"
-          >
-            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.75 7.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.25a7.5 7.5 0 0 1 15 0" />
-            </svg>
-          </NuxtLink>
+          <AccountMenu />
           <button
             type="button"
             class="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-line"

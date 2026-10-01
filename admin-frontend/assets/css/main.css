@@ -2,24 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-family: 'Kantumruy Pro', 'Noto Sans Khmer', system-ui, sans-serif;
+}
+
 body {
   @apply bg-surface text-ink antialiased;
 }
 
 @layer components {
-  .btn-primary {
-    @apply inline-flex min-h-10 items-center justify-center rounded-lg bg-brand px-4 text-sm font-semibold text-white transition hover:bg-brand/90;
+  .btn {
+    @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60;
   }
 
-  .badge-pending {
-    @apply rounded-full bg-warn/20 px-2.5 py-1 text-xs font-semibold text-ink;
+  .btn-primary {
+    @apply btn bg-brand text-white hover:bg-brand/90;
+  }
+
+  .btn-secondary {
+    @apply btn border border-line bg-white text-ink hover:bg-surface;
+  }
+
+  .btn-danger {
+    @apply btn bg-danger text-white hover:bg-danger/90;
+  }
+
+  .btn-icon {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-lg text-ink-muted transition hover:bg-surface hover:text-ink;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line/70 bg-white shadow-sm;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-sm font-semibold text-ink;
+  }
+
+  .field-input {
+    @apply min-h-10 w-full rounded-xl border border-line bg-white px-3 text-sm text-ink outline-none transition placeholder:text-ink-muted/60 focus:border-brand focus:ring-4 focus:ring-brand/10;
+  }
+
+  .field-error {
+    @apply mt-1 text-xs font-medium text-danger;
+  }
+
+  .table-head {
+    @apply bg-surface text-left text-xs font-semibold uppercase tracking-wide text-ink-muted;
+  }
+
+  .table-cell {
+    @apply border-t border-line/70 px-4 py-3 align-middle text-sm;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-semibold;
   }
 
   .badge-success {
-    @apply rounded-full bg-mint-tint px-2.5 py-1 text-xs font-semibold text-ink;
+    @apply badge bg-mint-tint text-ink;
+  }
+
+  .badge-pending {
+    @apply badge bg-warn/20 text-ink;
   }
 
   .badge-danger {
-    @apply rounded-full bg-danger/15 px-2.5 py-1 text-xs font-semibold text-danger;
+    @apply badge bg-danger/10 text-danger;
+  }
+
+  .badge-neutral {
+    @apply badge bg-surface text-ink-muted;
+  }
+
+  .badge-brand {
+    @apply badge bg-brand-tint text-ink;
   }
 }

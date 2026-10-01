@@ -1,5 +1,3 @@
-import { useApi } from './useApi'
-
 export interface MediaUploadResult {
   url: string
   secureUrl: string
@@ -15,45 +13,35 @@ const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
 const MAX_BYTES = 5 * 1024 * 1024
 
 export function useUpload() {
-  const { baseURL, apiFetch } = useApi()
+  const { apiFetch } = useApi()
+  const { t } = useI18n()
   const uploading = ref(false)
   const error = ref<string | null>(null)
 
   function validate(file: File) {
     if (!ALLOWED_TYPES.includes(file.type) && !/\.(jpe?g|png|webp)$/i.test(file.name)) {
-      throw new Error('Only jpg, png, and webp images are allowed')
+      throw new Error(t('upload.invalidType'))
     }
     if (file.size > MAX_BYTES) {
-      throw new Error('File size must be <= 5 MB')
+      throw new Error(t('upload.tooLarge'))
     }
   }
 
   async function uploadImage(file: File, folder = 'vimeanbaby/products'): Promise<MediaUploadResult> {
-    validate(file)
     uploading.value = true
     error.value = null
     try {
+      validate(file)
       const form = new FormData()
       form.append('file', file)
       form.append('folder', folder)
-
-      const response = await $fetch<{ success: boolean; message?: string; data: MediaUploadResult }>(
-        '/admin/media/upload',
-        {
-          baseURL,
-          method: 'POST',
-          body: form,
-        },
-      )
-      if (!response?.success) {
-        throw new Error(response?.message || 'Upload failed')
-      }
-      return response.data
-    } catch (e: unknown) {
-      const message = e instanceof Error ? e.message : 'Upload failed'
-      error.value = message
+      return await apiFetch<MediaUploadResult>('/admin/media/upload', { method: 'POST', body: form })
+    }
+    catch (e: unknown) {
+      error.value = e instanceof Error ? e.message : t('upload.failed')
       throw e
-    } finally {
+    }
+    finally {
       uploading.value = false
     }
   }

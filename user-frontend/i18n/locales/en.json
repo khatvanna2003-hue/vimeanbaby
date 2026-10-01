@@ -116,8 +116,192 @@
     "title": "Checkout",
     "comingSoon": "Full checkout arrives in the next phase."
   },
+  "auth": {
+    "signIn": "Sign in",
+    "signingIn": "Signing in...",
+    "register": "Register",
+    "createAccount": "Create account",
+    "creatingAccount": "Creating account...",
+    "loginTitle": "Welcome back",
+    "loginSubtitle": "Sign in to track orders, save addresses and check out faster.",
+    "registerTitle": "Create your account",
+    "registerSubtitle": "Join Vimean Baby in less than a minute — it's free.",
+    "identifier": "Email or phone number",
+    "identifierPlaceholder": "you{'@'}example.com or 012 345 678",
+    "fullName": "Full name",
+    "fullNamePlaceholder": "e.g. Sok Dara",
+    "email": "Email",
+    "phone": "Phone number",
+    "phoneHint": "We'll use this for delivery updates.",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "forgotPassword": "Forgot password? Contact support",
+    "noAccount": "New to Vimean Baby?",
+    "haveAccount": "Already have an account?",
+    "acceptTerms": "I agree to the Terms of Use and Privacy Policy.",
+    "secureNote": "Your information is encrypted and never shared.",
+    "panelTitle": "Everything for mom and baby, in one account",
+    "panelBody": "Create a free account and enjoy a faster, more personal shopping experience.",
+    "perks": {
+      "authentic": "100% authentic products",
+      "tracking": "Track every order and delivery",
+      "checkout": "Faster checkout with saved addresses",
+      "offers": "Member-only offers and baby-care tips"
+    },
+    "strength": {
+      "weak": "Weak",
+      "fair": "Fair",
+      "good": "Good",
+      "strong": "Strong"
+    },
+    "rules": {
+      "length": "8+ characters",
+      "letter": "A letter",
+      "number": "A number"
+    },
+    "validation": {
+      "identifierRequired": "Enter your email or phone number.",
+      "email": "Enter a valid email address.",
+      "phone": "Enter a valid Cambodian phone number.",
+      "passwordRequired": "Enter your password.",
+      "password": "Use at least 8 characters with a letter and a number.",
+      "confirmPassword": "Passwords do not match.",
+      "fullName": "Enter your full name.",
+      "terms": "Please accept the terms to continue."
+    }
+  },
   "account": {
-    "comingSoon": "Login and account features arrive in Phase 2 / 6."
+    "metaDescription": "Manage your Vimean Baby account, orders and addresses.",
+    "hi": "Hi, {name}",
+    "hello": "Welcome back,",
+    "welcomeNew": "Your account is ready. Welcome to Vimean Baby!",
+    "memberSince": "Member since {date}",
+    "logout": "Sign out",
+    "manage": "Manage",
+    "edit": "Edit",
+    "personalInfo": "Personal information",
+    "defaultAddress": "Default delivery address",
+    "noAddress": "You haven't saved a delivery address yet.",
+    "addAddress": "Add address",
+    "profileSubtitle": "Keep your details up to date for smooth deliveries.",
+    "profileSaved": "Your profile has been updated.",
+    "saveChanges": "Save changes",
+    "noChanges": "No changes to save.",
+    "dateOfBirth": "Date of birth",
+    "gender": "Gender",
+    "genderUnset": "Prefer not to say",
+    "genders": {
+      "FEMALE": "Female",
+      "MALE": "Male",
+      "OTHER": "Other"
+    },
+    "validation": {
+      "dateOfBirth": "Date of birth must be in the past."
+    },
+    "nav": {
+      "overview": "Overview",
+      "profile": "My profile",
+      "orders": "My orders",
+      "addresses": "Addresses",
+      "security": "Login & security"
+    },
+    "tiles": {
+      "orders": "Track, return or buy again",
+      "addresses": "{count} saved address(es)",
+      "security": "Password and sign-in"
+    },
+    "security": {
+      "changePassword": "Change password",
+      "changePasswordHint": "Changing your password signs you out on all other devices.",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "updatePassword": "Update password",
+      "passwordChanged": "Your password has been changed.",
+      "sessions": "Signed-in devices",
+      "sessionsHint": "Lost a phone or used a shared computer? Sign out everywhere.",
+      "lastSignIn": "Last sign-in",
+      "signOutAll": "Sign out of all devices",
+      "confirmSignOutAll": "Sign out of all devices, including this one?"
+    }
+  },
+  "orders": {
+    "subtitle": "Your order history and delivery status.",
+    "emptyTitle": "No orders yet",
+    "emptyBody": "When you place an order, it will appear here so you can track it."
+  },
+  "address": {
+    "subtitle": "Save addresses for faster checkout. You can keep up to 10.",
+    "newTitle": "New address",
+    "editTitle": "Edit address",
+    "receiverName": "Recipient name",
+    "province": "Province / City",
+    "district": "District / Khan",
+    "commune": "Commune / Sangkat",
+    "streetDetail": "House no., street, village",
+    "streetPlaceholder": "e.g. #12, St. 271",
+    "note": "Delivery note",
+    "notePlaceholder": "Landmark or delivery instructions (optional)",
+    "setDefault": "Use as my default address",
+    "save": "Save address",
+    "saved": "Address saved.",
+    "default": "Default",
+    "makeDefault": "Set as default",
+    "defaultUpdated": "Default address updated.",
+    "delete": "Delete",
+    "deleted": "Address deleted.",
+    "confirmDelete": "Delete this address?",
+    "emptyTitle": "No saved addresses",
+    "emptyBody": "Add a delivery address to check out faster next time.",
+    "validation": {
+      "required": "This field is required."
+    }
+  },
+  "errors": {
+    "GENERIC": "Something went wrong. Please try again.",
+    "NETWORK": "Cannot reach the server. Check your connection and try again.",
+    "VALIDATION": "Please check the highlighted fields.",
+    "BAD_REQUEST": "The request was invalid. Please try again.",
+    "INVALID_CREDENTIALS": "Incorrect email/phone or password.",
+    "ACCOUNT_DISABLED": "This account has been disabled. Please contact support.",
+    "EMAIL_TAKEN": "This email is already registered. Try signing in instead.",
+    "PHONE_TAKEN": "This phone number is already registered. Try signing in instead.",
+    "INVALID_PHONE": "Enter a valid Cambodian phone number.",
+    "TOKEN_INVALID": "Your session has expired. Please sign in again.",
+    "UNAUTHORIZED": "Please sign in to continue.",
+    "FORBIDDEN": "You don't have permission to do that.",
+    "WRONG_PASSWORD": "Your current password is incorrect.",
+    "SAME_PASSWORD": "Your new password must be different from the current one.",
+    "ADDRESS_LIMIT": "You can save up to 10 addresses. Delete one to add another.",
+    "CONFLICT": "This information is already in use."
+  },
+  "provinces": {
+    "phnomPenh": "Phnom Penh",
+    "banteayMeanchey": "Banteay Meanchey",
+    "battambang": "Battambang",
+    "kampongCham": "Kampong Cham",
+    "kampongChhnang": "Kampong Chhnang",
+    "kampongSpeu": "Kampong Speu",
+    "kampongThom": "Kampong Thom",
+    "kampot": "Kampot",
+    "kandal": "Kandal",
+    "kep": "Kep",
+    "kohKong": "Koh Kong",
+    "kratie": "Kratie",
+    "mondulkiri": "Mondulkiri",
+    "oddarMeanchey": "Oddar Meanchey",
+    "pailin": "Pailin",
+    "preahSihanouk": "Preah Sihanouk",
+    "preahVihear": "Preah Vihear",
+    "preyVeng": "Prey Veng",
+    "pursat": "Pursat",
+    "ratanakiri": "Ratanakiri",
+    "siemReap": "Siem Reap",
+    "stungTreng": "Stung Treng",
+    "svayRieng": "Svay Rieng",
+    "takeo": "Takeo",
+    "tbongKhmum": "Tbong Khmum"
   },
   "footer": {
     "about": "About Us",
@@ -141,6 +325,8 @@
   },
   "common": {
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "cancel": "Cancel",
+    "retry": "Try again"
   }
 }

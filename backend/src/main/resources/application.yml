@@ -47,6 +47,10 @@ app:
     email: ${ADMIN_EMAIL:admin@vimeanbaby.com}
     password: ${ADMIN_PASSWORD:ChangeMe123!}
     full-name: ${ADMIN_FULL_NAME:Vimean Baby Admin}
+    phone: ${ADMIN_PHONE:+85500000000}
+  inventory:
+    low-stock-threshold: ${LOW_STOCK_THRESHOLD:5}
+    expiry-warning-days: ${EXPIRY_WARNING_DAYS:60}
 
 springdoc:
   api-docs:

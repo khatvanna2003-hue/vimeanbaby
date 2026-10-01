@@ -10,6 +10,8 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
 
     Optional<Category> findBySlugAndActiveTrue(String slug);
 
+    long countByActiveTrue();
+
     boolean existsBySlug(String slug);
 
     boolean existsBySlugAndIdNot(String slug, Long id);

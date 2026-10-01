@@ -26,7 +26,8 @@ public class CatalogMapper {
                 category.getNameEn(),
                 category.getSlug(),
                 category.getImageUrl(),
-                category.getSortOrder()
+                category.getSortOrder(),
+                Boolean.TRUE.equals(category.getActive())
         );
     }
 
@@ -34,13 +35,20 @@ public class CatalogMapper {
         if (brand == null) {
             return null;
         }
-        return new BrandResponse(brand.getId(), brand.getName(), brand.getSlug(), brand.getLogoUrl());
+        return new BrandResponse(
+                brand.getId(),
+                brand.getName(),
+                brand.getSlug(),
+                brand.getLogoUrl(),
+                Boolean.TRUE.equals(brand.getActive())
+        );
     }
 
     public ProductImageResponse toImageResponse(ProductImage image) {
         return new ProductImageResponse(
                 image.getId(),
                 image.getUrl(),
+                image.getCloudinaryPublicId(),
                 image.getSortOrder(),
                 Boolean.TRUE.equals(image.getPrimary())
         );
@@ -54,15 +62,21 @@ public class CatalogMapper {
                 variant.getPrice(),
                 variant.getCompareAtPrice(),
                 variant.getStockQty(),
-                variant.getExpiryDate()
+                variant.getExpiryDate(),
+                Boolean.TRUE.equals(variant.getActive())
         );
     }
 
     public ProductSummaryResponse toSummary(Product product) {
-        ProductVariant cheapest = product.getVariants().stream()
+        List<ProductVariant> activeVariants = product.getVariants().stream()
                 .filter(v -> Boolean.TRUE.equals(v.getActive()))
+                .toList();
+        ProductVariant cheapest = activeVariants.stream()
                 .min(Comparator.comparing(ProductVariant::getPrice))
                 .orElse(null);
+        int totalStock = activeVariants.stream()
+                .mapToInt(v -> v.getStockQty() != null ? v.getStockQty() : 0)
+                .sum();
 
         String imageUrl = product.getImages().stream()
                 .filter(img -> Boolean.TRUE.equals(img.getPrimary()))
@@ -85,21 +99,30 @@ public class CatalogMapper {
                 product.getSlug(),
                 product.getBrand() != null ? product.getBrand().getName() : null,
                 product.getCategory() != null ? product.getCategory().getSlug() : null,
+                product.getCategory() != null ? product.getCategory().getNameEn() : null,
                 imageUrl,
                 price,
                 compare,
                 stock,
+                totalStock,
+                activeVariants.size(),
                 Boolean.TRUE.equals(product.getFeatured()),
+                Boolean.TRUE.equals(product.getActive()) && product.getDeletedAt() == null,
                 product.getAgeRange()
         );
     }
 
     public ProductDetailResponse toDetail(Product product) {
+        return toDetail(product, false);
+    }
+
+    /** Admin edits need inactive variants too, otherwise saving the form would silently drop them. */
+    public ProductDetailResponse toDetail(Product product, boolean includeInactiveVariants) {
         List<ProductImageResponse> images = product.getImages().stream()
                 .map(this::toImageResponse)
                 .toList();
         List<ProductVariantResponse> variants = product.getVariants().stream()
-                .filter(v -> Boolean.TRUE.equals(v.getActive()))
+                .filter(v -> includeInactiveVariants || Boolean.TRUE.equals(v.getActive()))
                 .map(this::toVariantResponse)
                 .toList();
 
@@ -113,6 +136,7 @@ public class CatalogMapper {
                 product.getAgeRange(),
                 product.getOriginCountry(),
                 Boolean.TRUE.equals(product.getFeatured()),
+                Boolean.TRUE.equals(product.getActive()) && product.getDeletedAt() == null,
                 toCategoryResponse(product.getCategory()),
                 toBrandResponse(product.getBrand()),
                 images,

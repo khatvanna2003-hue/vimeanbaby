@@ -10,6 +10,8 @@ public interface BrandRepository extends JpaRepository<Brand, Long> {
 
     Optional<Brand> findBySlugAndActiveTrue(String slug);
 
+    long countByActiveTrue();
+
     boolean existsBySlug(String slug);
 
     boolean existsBySlugAndIdNot(String slug, Long id);
