@@ -13,9 +13,9 @@ export default {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#FF5C77',
-          light: '#FF8A9B',
-          tint: '#FFE5EA',
+          DEFAULT: '#FF2E51',
+          light: '#FF8297',
+          tint: '#FFE6EA',
         },
         blush: {
           DEFAULT: '#F4A6B8',
@@ -34,8 +34,8 @@ export default {
         danger: '#E5534B',
         warn: '#F0A030',
         // legacy aliases used in existing components
-        'baby-blue': '#FFE5EA',
-        'baby-blue-deep': '#FF5C77',
+        'baby-blue': '#FFE6EA',
+        'baby-blue-deep': '#FF2E51',
         'light-pink': '#FDE4EC',
         muted: '#6B7785',
       },

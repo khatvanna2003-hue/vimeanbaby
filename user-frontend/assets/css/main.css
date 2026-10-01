@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --color-brand: #ff5c77;
-  --color-brand-light: #ff8a9b;
-  --color-brand-tint: #ffe5ea;
+  --color-brand: #ff2e51;
+  --color-brand-light: #ff8297;
+  --color-brand-tint: #ffe6ea;
   --color-blush: #f4a6b8;
   --color-blush-tint: #fde4ec;
   --color-mint: #8fd3b6;

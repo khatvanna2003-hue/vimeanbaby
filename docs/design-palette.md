@@ -4,9 +4,9 @@ Canonical storefront palette for Vimean Baby (coral pink + cream).
 
 | Role | Hex | Tailwind |
 |---|---|---|
-| Primary / buttons | `#FF5C77` | `bg-brand text-white` |
-| Links / highlights | `#FF8A9B` | `text-brand-light` |
-| Soft section tint | `#FFE5EA` | `bg-brand-tint` |
+| Primary / buttons | `#FF2E51` | `bg-brand text-white` |
+| Links / highlights | `#FF8297` | `text-brand-light` |
+| Soft section tint | `#FFE6EA` | `bg-brand-tint` |
 | Badge pink | `#F4A6B8` | `bg-blush` (badges only) |
 | Soft blush section | `#FDE4EC` | `bg-blush-tint` |
 | Success / authentic | `#8FD3B6` | `bg-mint` / `bg-mint-tint` |

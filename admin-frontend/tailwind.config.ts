@@ -12,9 +12,9 @@ export default {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#FF5C77',
-          light: '#FF8A9B',
-          tint: '#FFE5EA',
+          DEFAULT: '#FF2E51',
+          light: '#FF8297',
+          tint: '#FFE6EA',
         },
         blush: {
           DEFAULT: '#F4A6B8',
